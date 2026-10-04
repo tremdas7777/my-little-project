@@ -11,7 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CheckoutRouteImport } from './routes/checkout'
-import { Route as PedidoDemoRouteImport } from './routes/pedido-demo'
+import { Route as PedidoConfirmadoRouteImport } from './routes/pedido-confirmado'
 import { Route as ProdutosRouteImport } from './routes/produtos'
 import { Route as ProdutoSlugRouteImport } from './routes/produto.$slug'
 
@@ -25,9 +25,9 @@ const CheckoutRoute = CheckoutRouteImport.update({
   path: '/checkout',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PedidoDemoRoute = PedidoDemoRouteImport.update({
-  id: '/pedido-demo',
-  path: '/pedido-demo',
+const PedidoConfirmadoRoute = PedidoConfirmadoRouteImport.update({
+  id: '/pedido-confirmado',
+  path: '/pedido-confirmado',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProdutosRoute = ProdutosRouteImport.update({
@@ -44,14 +44,14 @@ const ProdutoSlugRoute = ProdutoSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/checkout': typeof CheckoutRoute
-  '/pedido-demo': typeof PedidoDemoRoute
+  '/pedido-confirmado': typeof PedidoConfirmadoRoute
   '/produtos': typeof ProdutosRoute
   '/produto/$slug': typeof ProdutoSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/checkout': typeof CheckoutRoute
-  '/pedido-demo': typeof PedidoDemoRoute
+  '/pedido-confirmado': typeof PedidoConfirmadoRoute
   '/produtos': typeof ProdutosRoute
   '/produto/$slug': typeof ProdutoSlugRoute
 }
@@ -59,20 +59,21 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/checkout': typeof CheckoutRoute
-  '/pedido-demo': typeof PedidoDemoRoute
+  '/pedido-confirmado': typeof PedidoConfirmadoRoute
   '/produtos': typeof ProdutosRoute
   '/produto/$slug': typeof ProdutoSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/checkout' | '/pedido-demo' | '/produtos' | '/produto/$slug'
+  fullPaths:
+    '/' | '/checkout' | '/pedido-confirmado' | '/produtos' | '/produto/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/checkout' | '/pedido-demo' | '/produtos' | '/produto/$slug'
+  to: '/' | '/checkout' | '/pedido-confirmado' | '/produtos' | '/produto/$slug'
   id:
     | '__root__'
     | '/'
     | '/checkout'
-    | '/pedido-demo'
+    | '/pedido-confirmado'
     | '/produtos'
     | '/produto/$slug'
   fileRoutesById: FileRoutesById
@@ -80,7 +81,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CheckoutRoute: typeof CheckoutRoute
-  PedidoDemoRoute: typeof PedidoDemoRoute
+  PedidoConfirmadoRoute: typeof PedidoConfirmadoRoute
   ProdutosRoute: typeof ProdutosRoute
   ProdutoSlugRoute: typeof ProdutoSlugRoute
 }
@@ -101,11 +102,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CheckoutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/pedido-demo': {
-      id: '/pedido-demo'
-      path: '/pedido-demo'
-      fullPath: '/pedido-demo'
-      preLoaderRoute: typeof PedidoDemoRouteImport
+    '/pedido-confirmado': {
+      id: '/pedido-confirmado'
+      path: '/pedido-confirmado'
+      fullPath: '/pedido-confirmado'
+      preLoaderRoute: typeof PedidoConfirmadoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/produtos': {
@@ -128,7 +129,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CheckoutRoute: CheckoutRoute,
-  PedidoDemoRoute: PedidoDemoRoute,
+  PedidoConfirmadoRoute: PedidoConfirmadoRoute,
   ProdutosRoute: ProdutosRoute,
   ProdutoSlugRoute: ProdutoSlugRoute,
 }
