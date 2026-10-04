@@ -16,16 +16,6 @@ const NAV = [
   { label: "Flow", search: { linha: "flow" as const } },
 ];
 
-/** Faixa fixa avisando que é demonstração (proposta de redesign). */
-function DemoBar() {
-  return (
-    <div className="bg-volt px-4 py-1.5 text-center text-[11px] font-semibold uppercase tracking-[0.14em] text-white">
-      <span className="md:hidden">Proposta de redesign · demonstração</span>
-      <span className="hidden md:inline">Proposta de redesign · ambiente de demonstração · nenhum pagamento é processado</span>
-    </div>
-  );
-}
-
 function Marquee() {
   const items = ["6x sem juros", "Troca grátis em até 7 dias", "Compra 100% segura", "Feito pra andar de skate"];
   const row = [...items, ...items, ...items, ...items];
@@ -247,11 +237,8 @@ function Footer() {
             </ul>
           </div>
           <div>
-            <p className="mb-4 text-[12px] font-bold uppercase tracking-[0.16em] text-white">Sobre esta versão</p>
-            <p>
-              Proposta de redesign da loja Tesla Skate. Ambiente de demonstração: preços promocionais são exemplos e nenhum
-              pagamento é processado.
-            </p>
+            <p className="mb-4 text-[12px] font-bold uppercase tracking-[0.16em] text-white">Tesla Skate</p>
+            <p>Tênis feitos pra andar de skate. Compra 100% segura, troca grátis em até 7 dias e parcelamento em até 6x sem juros.</p>
           </div>
         </div>
       </div>
@@ -262,7 +249,6 @@ function Footer() {
 export function StoreLayout({ children }: { children: ReactNode }) {
   return (
     <div className="flex min-h-screen flex-col">
-      <DemoBar />
       <Marquee />
       <Header />
       <main className="flex-1">{children}</main>
