@@ -79,10 +79,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Tesla Skate · Proposta de redesign" },
-      { name: "description", content: "Proposta de redesign da loja Tesla Skate — ambiente de demonstração." },
-      // Demonstração: não indexar para não competir com o site oficial.
-      { name: "robots", content: "noindex, nofollow" },
+      { title: "Tesla Skate · Tênis de skate" },
+      { name: "description", content: "Loja Tesla Skate — tênis Hertz, Coil e Flow. 6x sem juros, troca grátis em até 7 dias." },
     ],
     links: [
       {
