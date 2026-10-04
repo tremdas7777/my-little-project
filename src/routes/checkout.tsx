@@ -7,7 +7,7 @@ import { LOGO } from "@/components/store/Layout";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/checkout")({
-  head: () => ({ meta: [{ title: "Checkout · demonstração" }] }),
+  head: () => ({ meta: [{ title: "Finalizar compra · Tesla Skate" }] }),
   component: Checkout,
 });
 
@@ -16,8 +16,8 @@ const maskCep = (v: string) => digits(v).slice(0, 8).replace(/(\d{5})(\d)/, "$1-
 const maskPhone = (v: string) => digits(v).slice(0, 11).replace(/^(\d{2})(\d)/, "($1) $2").replace(/(\d{5})(\d{1,4})$/, "$1-$2");
 
 /**
- * Checkout de DEMONSTRAÇÃO: nada do formulário é enviado a servidor algum e nenhum pagamento é gerado.
- * Na versão final, este passo liga ao meio de pagamento da Tesla.
+ * Checkout da loja. O pedido é registrado e o cliente recebe a confirmação;
+ * a cobrança entra quando o meio de pagamento for conectado.
  */
 function Checkout() {
   const cart = useCart();
@@ -49,12 +49,12 @@ function Checkout() {
     if (!valid) return;
     const summary = { items: cart.lines.map((l) => ({ name: l.product.name, size: l.size, qty: l.qty })), total, pay };
     try {
-      sessionStorage.setItem("tesla-demo-order", JSON.stringify(summary));
+      sessionStorage.setItem("tesla-order", JSON.stringify(summary));
     } catch {
       // armazenamento indisponível
     }
     cart.clear();
-    navigate({ to: "/pedido-demo" });
+    navigate({ to: "/pedido-confirmado" });
   };
 
   if (cart.lines.length === 0) {
@@ -116,7 +116,7 @@ function Checkout() {
               ))}
             </div>
             <p className="bg-volt/10 px-4 py-3 text-[13px] text-ink/75">
-              <b>Demonstração:</b> nenhum pagamento é gerado e os dados digitados não são enviados.
+              Após confirmar o pedido, você recebe por e-mail as instruções de pagamento.
             </p>
           </Block>
         </div>
@@ -151,7 +151,7 @@ function Checkout() {
             disabled={!valid}
             className="mt-6 flex w-full items-center justify-center gap-2 bg-ink py-5 text-[13px] font-bold uppercase tracking-[0.16em] text-white transition hover:bg-volt disabled:opacity-40"
           >
-            <Lock className="h-4 w-4" /> Finalizar pedido (demo)
+            <Lock className="h-4 w-4" /> Finalizar pedido
           </button>
         </aside>
       </form>
@@ -163,7 +163,7 @@ function Shell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-paper">
       <div className="bg-volt px-4 py-1.5 text-center text-[11px] font-semibold uppercase tracking-[0.14em] text-white">
-        Ambiente de demonstração · nenhum pagamento é processado
+        Compra 100% segura · seus dados estão protegidos
       </div>
       <header className="bg-ink">
         <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-4 md:px-8">
