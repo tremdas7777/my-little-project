@@ -1,6 +1,5 @@
 /**
- * Catálogo da proposta de redesign Tesla Skate (dados da loja atual, outubro/2026).
- * Preços de promoção (`promo`) são EXEMPLOS para a demonstração — a Tesla define os reais.
+ * Catálogo da loja Tesla Skate (outubro/2026).
  */
 
 export type Line = "hertz" | "coil" | "flow";
@@ -16,7 +15,7 @@ export type Product = {
   name: string;
   line: Line;
   price: number;
-  /** Preço promocional de exemplo (demonstração). */
+  /** Preço promocional, quando ativo. */
   promo?: number;
   images: string[];
   sizes: number[];

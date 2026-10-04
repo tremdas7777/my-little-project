@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { finalPrice, getProduct, type Product } from "@/lib/catalog";
 
-const KEY = "tesla-demo-cart";
+const KEY = "tesla-cart";
 
 export type CartLine = { key: string; product: Product; size: number; qty: number };
 

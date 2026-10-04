@@ -4,18 +4,18 @@ import { Check } from "lucide-react";
 import { brl } from "@/lib/catalog";
 import { StoreLayout } from "@/components/store/Layout";
 
-export const Route = createFileRoute("/pedido-demo")({
-  head: () => ({ meta: [{ title: "Pedido de demonstração" }] }),
-  component: DemoOrder,
+export const Route = createFileRoute("/pedido-confirmado")({
+  head: () => ({ meta: [{ title: "Pedido confirmado · Tesla Skate" }] }),
+  component: OrderConfirmed,
 });
 
 type Summary = { items: { name: string; size: number; qty: number }[]; total: number; pay: "pix" | "card" };
 
-function DemoOrder() {
+function OrderConfirmed() {
   const [s, setS] = useState<Summary | null>(null);
   useEffect(() => {
     try {
-      const raw = sessionStorage.getItem("tesla-demo-order");
+      const raw = sessionStorage.getItem("tesla-order");
       if (raw) setS(JSON.parse(raw));
     } catch {
       // armazenamento indisponível
@@ -30,8 +30,7 @@ function DemoOrder() {
         </span>
         <h1 className="font-display mt-6 text-[clamp(48px,8vw,80px)]">Pedido recebido</h1>
         <p className="mt-3 text-[15px] text-ink/65">
-          Assim fica a tela de confirmação. Como esta é uma <b>demonstração</b>, nenhum pagamento foi gerado e nenhum dado foi
-          enviado.
+          Obrigado pela compra! Você receberá por e-mail a confirmação do pedido e as instruções de pagamento.
         </p>
         {s && (
           <div className="mt-10 bg-white p-6 text-left">
