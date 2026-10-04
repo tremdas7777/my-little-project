@@ -59,10 +59,25 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  /* Tesla — proposta de redesign */
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-volt: var(--volt);
+  --color-acid: var(--acid);
+  --color-line: var(--line);
+  --color-tile: var(--tile);
+  --font-sans: "Urbanist", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Anton", "Urbanist", ui-sans-serif, sans-serif;
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0.25rem;
+  --ink: oklch(0.16 0 0);
+  --paper: oklch(0.962 0.004 95);
+  --volt: oklch(0.53 0.26 288);
+  --acid: oklch(0.93 0.21 124);
+  --line: oklch(0.16 0 0 / 12%);
+  --tile: oklch(0.972 0.002 95);
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(1 0 0);
@@ -138,7 +153,27 @@
   }
 
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
   }
 }
+
+@keyframes tesla-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  line-height: 0.92;
+}
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Fotos de estúdio têm fundos de 250–255; "multiply" funde todos no fundo do card, sem moldura. */
+.shot { mix-blend-mode: multiply; }
